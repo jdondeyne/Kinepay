@@ -1,0 +1,61 @@
+<!--
+  Generated template for the CreationDepense page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Création d'une dépense</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<!-- <h3 text-center>Création d'une dépense</h3> -->
+
+	<form (ngSubmit)="onSubmit()">
+		<ion-list>
+		  <ion-item>
+		    <ion-label fixed>Nom</ion-label>
+		    <ion-input required type="text" value="" [(ngModel)]="depenseForm.nom" name="nom"></ion-input>
+		  </ion-item>
+
+		  <ion-item>
+		    <ion-label fixed>Somme</ion-label>
+		    <ion-input required type="number" min="1" step="any" [(ngModel)]="depenseForm.somme" name="somme"></ion-input>
+		  </ion-item>
+
+		  <ion-item>
+		    <ion-label fixed>Date</ion-label>
+		    <!-- <ion-input type="date"></ion-input> -->
+		    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="depenseForm.dateDepense" name="dateDepense"></ion-datetime>
+		  </ion-item>
+
+		<ion-list>
+			<ion-list-header text-center>Participants</ion-list-header>
+			<ion-item *ngFor="let participant of participants">
+			  <ion-label >{{participant.nom}}</ion-label>
+			  <ion-checkbox></ion-checkbox>
+			</ion-item>
+		</ion-list>
+
+		<ion-grid>
+		  <ion-row>
+		    <ion-col col-6>
+		    	<button type="button" ion-button block color="danger" (click)="goBack()">Annuler</button>
+		    </ion-col>
+		    <ion-col col-6>
+		    	<button type="submit" ion-button block>Ok</button>
+		    </ion-col>
+		  </ion-row>
+		</ion-grid>
+
+		</ion-list>
+	</form>
+</ion-content>

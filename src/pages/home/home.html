@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Accueil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1 text-center>KinéP@y</h1>
+  <div text-center>
+    <img style="height: 50vh !important;width: auto !important;" src="assets/imgs/kinepolis1.jpg"/>
+  </div>
+
+  <button ion-button full (click)="goToListeDepensesPage()">Dépenses</button>
+  <button ion-button full (click)="goToListeParticipantsPage()">Participants</button>
+  <button ion-button full>Options</button>
+
+
+</ion-content>
