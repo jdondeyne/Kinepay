@@ -20,8 +20,11 @@
 	<!-- <h3 text-center>Liste des Dépenses</h3> -->
 
 	<ion-list>
-		<ion-item-sliding *ngFor="let depense of depenses ">
-		  <ion-item>
+		<ion-item-sliding *ngFor="let depense of depenses; let i=index">
+		  <ion-item (click)="cocherPayes(i)">
+		  	<ion-avatar item-start>
+		       <ion-badge *ngIf="depense.participants">{{depense.participants.length}}</ion-badge>
+		    </ion-avatar>
 		    <h2 style="font-weight: bold;">{{depense.nom}}</h2>
 		    <h3 item-right>{{depense.somme}}€</h3>
 		    <p item-middle>{{depense.dateDepense | date: 'dd/MM/yyyy' }}</p>

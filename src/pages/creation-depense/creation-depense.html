@@ -39,9 +39,9 @@
 
 		<ion-list>
 			<ion-list-header text-center>Participants</ion-list-header>
-			<ion-item *ngFor="let participant of participants">
+			<ion-item *ngFor="let participant of participants; let i=index">
 			  <ion-label >{{participant.nom}}</ion-label>
-			  <ion-checkbox></ion-checkbox>
+			  <ion-checkbox [(ngModel)]="depenseForm.participants[i]" name="participant.nom"></ion-checkbox>
 			</ion-item>
 		</ion-list>
 

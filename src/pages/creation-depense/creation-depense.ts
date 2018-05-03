@@ -25,69 +25,28 @@ export class CreationDepensePage {
     public storage: Storage, private emailComposer: EmailComposer,
     public platform: Platform) {
 
-    this.depenseForm = {'nom' : ''}; 
+    this.depenseForm = {}; 
+    this.depenseForm.participants = []; 
 
-  	  this.storage.get('participants').then((val) => {
+  	this.storage.get('participants').then((val) => {
       console.log('Participants:', val);
-      if(val == null){
-        //si vide, on cree une liste de participants
-        this.participants = [
-        {
-          nom: 'Pauline',
-          mail: 'pauline@gmail.com',
-          tel: '0607080910'
-        },
-        {
-          nom: 'Jerem',
-          mail: 'jerem@gmail.com',
-          tel: '0607080910'
-        },
-        {
-          nom: 'Samuel',
-          mail: 'sam@gmail.com',
-          tel: '0607080910'
-        },
-        {
-          nom: 'Yannick',
-          mail: 'yaya@gmail.com',
-          tel: '0607080910'
-        },
-        {
-          nom: 'Johann',
-          mail: 'jo@gmail.com',
-          tel: '0607080910'
-        },
-        {
-          nom: 'Hélène',
-          mail: 'helene@gmail.com',
-          tel: '0607080910'
-        },
-        {
-          nom: 'Adrien',
-          mail: 'adrien@gmail.com',
-          tel: '0607080910'
-        }
-      ]
-      }else{
+      if(val != null){
         //si existe on recupere la liste
         this.participants = val;
       }
       
     });
 
-      this.depenseForm.dateDepense = new Date().toISOString();
+    this.depenseForm.dateDepense = new Date().toISOString();
 
-      //recuperation des dépenses du local storage
-      this.storage.get('depenses').then((val) => {
-        console.log('Depenses:', val);
-        if(val == null){
-          //si vide, on cree une liste de participants
-          this.depenses = []
-        }else{
-          //si existe on recupere la liste
-          this.depenses = val;
-        }
-      });
+    //recuperation des dépenses du local storage
+    this.storage.get('depenses').then((val) => {
+      console.log('Depenses:', val);
+      if(val != null){
+        //si existe on recupere la liste
+        this.depenses = val;
+      }
+    });
   }
 
 
@@ -139,6 +98,7 @@ export class CreationDepensePage {
        }
       });
   }
+
 
 
 

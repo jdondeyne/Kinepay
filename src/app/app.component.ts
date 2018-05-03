@@ -28,8 +28,7 @@ export class MyApp {
       { title: 'Accueil', component: HomePage },
       { title: 'Liste des Dépenses', component: ListeDepensesPage },
       { title: 'Creation d\'une Dépense', component: CreationDepensePage },
-      { title: 'Liste des Participants', component: ListeParticipantsPage },
-      { title: 'Creation d\'un Participant', component: CreationParticipantPage }
+      { title: 'Liste des Participants', component: ListeParticipantsPage }
     ];
 
   }
