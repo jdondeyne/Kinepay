@@ -17,7 +17,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 export class CreationDepensePage {
  creationDepense = CreationDepensePage;
 
- depenseForme: any;
+ depenseForm: any;
  participants: any;
  depenses : any;
 
