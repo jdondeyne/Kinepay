@@ -23,7 +23,7 @@
 		<ion-item-sliding *ngFor="let depense of depenses; let i=index">
 		  <ion-item (click)="cocherPayes(i)">
 		  	<ion-avatar item-start>
-		       <ion-badge *ngIf="depense.participants">{{depense.participants.length}}</ion-badge>
+		       <ion-badge>{{depense.nbParticipants}}</ion-badge>
 		    </ion-avatar>
 		    <h2 style="font-weight: bold;">{{depense.nom}}</h2>
 		    <h3 item-right>{{depense.somme}}€</h3>
@@ -33,6 +33,16 @@
 		      <button ion-button color="danger" (click)="supprimerDepense(depense)">
 		        <ion-icon name="trash"></ion-icon>
 		        Suppr
+		      </button>
+		    </ion-item-options>
+		    <ion-item-options side="left">
+		      <button ion-button color="" (click)="sendAlert(i, 'Mail')">
+		        <ion-icon name="mail"></ion-icon>
+		        Mail
+		      </button>
+		      <button ion-button color="secondary" (click)="sendAlert(i, 'SMS')">
+		        <ion-icon name="send"></ion-icon>
+		        SMS
 		      </button>
 		    </ion-item-options>
 		</ion-item-sliding>

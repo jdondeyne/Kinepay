@@ -9,7 +9,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+participants: any;
+depenses:any;
 
   constructor(public navCtrl: NavController, public storage: Storage) {
 

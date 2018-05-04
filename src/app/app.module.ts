@@ -4,7 +4,10 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { SMS } from '@ionic-native/sms';
 import { Sort } from '../pipes/sort';
+import { DatePipe } from '@angular/common';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -47,7 +50,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     EmailComposer,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SMS,
+    DatePipe,
+    AndroidPermissions
   ]
 })
 export class AppModule {}

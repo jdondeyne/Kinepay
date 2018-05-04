@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { EmailComposer } from '@ionic-native/email-composer';
 /*import { Validators, FormBuilder, FormGroup } from '@angular/forms';*/
 
 /**
@@ -22,8 +21,7 @@ export class CreationDepensePage {
  depenses : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public storage: Storage, private emailComposer: EmailComposer,
-    public platform: Platform) {
+    public storage: Storage) {
 
     this.depenseForm = {}; 
     this.depenseForm.participants = []; 
@@ -51,16 +49,7 @@ export class CreationDepensePage {
 
 
   onSubmit() {
-
     console.log('submitting form');
-
-    if (this.platform.is('cordova')) {
-      // You're on a device
-      //this.sendMail();
-    } else {
-      // You're testing in browser
-      console.log('Le mail sera envoyé sur un device reel.');
-    }
 
     //Ajoute la ligne au local storage   
     this.depenses.push(this.depenseForm);
@@ -76,30 +65,6 @@ export class CreationDepensePage {
   goBack(){
     this.navCtrl.pop();
   }
-
-
-  sendMail(){
-    this.emailComposer.isAvailable().then((available: boolean) =>{
-     if(available) {
-      
-      let email = {
-        app: 'gmail',
-        to: 'till1100@gmail.com',
-        attachments: [],
-        subject: 'Bot Kinep@y',
-        body: 'Bonjour, ceci est un mail automatique.',
-        isHtml: true
-      };
-
-      this.emailComposer.addAlias('gmail', 'com.google.android.gm');
-      // Send a text message using default options
-      this.emailComposer.open(email);
-
-       }
-      });
-  }
-
-
 
 
 }
