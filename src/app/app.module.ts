@@ -50,10 +50,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     EmailComposer,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     SMS,
     DatePipe,
-    AndroidPermissions
+    AndroidPermissions,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+
   ]
 })
 export class AppModule {}

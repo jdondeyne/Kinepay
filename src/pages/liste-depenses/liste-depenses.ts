@@ -131,7 +131,7 @@ depenses: any;
 
       alert = this.alertCtrl.create({
         title: 'Envoyer ' + type +  '?',
-        message: people.toString(),
+        message: people.toString().replaceAll(",,$", ""),
         buttons: [
           {
             text: 'Non',
@@ -166,13 +166,13 @@ depenses: any;
     let options={
           replaceLineBreaks: false, // true to replace \n by a new line, false by default
           android: {
-               //intent: 'INTENT'  // Opens Default sms app
-              intent: '' // Sends sms without opening default sms app
+              intent: 'INTENT'  // Opens Default sms app
+              //intent: '' // Sends sms without opening default sms app
             }
     }
     //+1 car je suis dedans
-    let partipation = depense.somme / depense.nbParticipants+1;
-    let message = 'Kinepay BOT: Vous devez ' + partipation.toFixed(2)  + '€ pour le film ' + depense.nom + ' en date du ' + this.datePipe.transform(depense.dateDepense, 'dd/MM/yyyy');
+    let partipation = depense.somme / (depense.nbParticipants + 1);
+    let message = 'Kinepay BOT: Vous devez ' + partipation.toFixed(2)  + '€ à Julien pour le film ' + depense.nom + ' en date du ' + this.datePipe.transform(depense.dateDepense, 'dd/MM/yyyy');
 
     //Retrouver les numeros des participants en fonction du tableau de boolean
     let multiNumber = [];
@@ -180,6 +180,8 @@ depenses: any;
     for(i = 0; i < this.participants.length ; i++) {
       if(depense.participants[i] == true){
         multiNumber[i] = this.participants[i].tel;
+      }else{
+        multiNumber[i] = "";
       }
     }
 
@@ -194,22 +196,22 @@ depenses: any;
 
   sendMail(people: string[], depense: any){
     this.emailComposer.isAvailable().then((available: boolean) =>{
-     if(available) {
-      
-      let email = {
-        app: 'gmail',
-        to: 'till1100@gmail.com',
-        attachments: [],
-        subject: 'Bot Kinep@y',
-        body: 'Bonjour, ceci est un mail automatique.',
-        isHtml: true
-      };
+       if(available) {
+        
+        let email = {
+          app: 'gmail',
+          to: 'till1100@gmail.com',
+          attachments: [],
+          subject: 'Bot Kinep@y',
+          body: 'Bonjour, ceci est un mail automatique.',
+          isHtml: true
+        };
 
-      this.emailComposer.addAlias('gmail', 'com.google.android.gm');
-      // Send a text message using default options
-      this.emailComposer.open(email);
+        this.emailComposer.addAlias('gmail', 'com.google.android.gm');
+        // Send a text message using default options
+        this.emailComposer.open(email);
 
-       }
+         }
       });
   }
 
